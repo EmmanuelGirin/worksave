@@ -1,0 +1,14 @@
+---
+- name: "Installation de Mario Docker conteneur"
+  become: yes
+  hosts: prod
+  tasks:
+    - name: deploy mario docker
+      docker_container:
+        image: pengbai/docker-supermario
+        name: pengbai/docker-supermario
+        state: started
+        auto_remove: true
+        ports:
+          - "8080:8080"
+...

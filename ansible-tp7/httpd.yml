@@ -1,0 +1,16 @@
+---
+- name: "Install and run httpd"
+  become: yes
+  hosts: prod
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Create httpd container
+      docker_container:
+        name: httpd
+        image: httpd:2.4
+        published_ports: 0.0.0.0:8080:80
+        state: started
+        volumes:
+          - /data/:/usr/local/apache2/htdocs/:ro
+...

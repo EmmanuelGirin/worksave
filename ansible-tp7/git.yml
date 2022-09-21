@@ -1,0 +1,10 @@
+---
+- name: "create data directory and git clone web app"
+  hosts: prod
+
+  tasks:
+    - name: Git checkout into directory
+      ansible.builtin.git:
+        repo: 'https://github.com/diranetafen/static-website-example.git'
+        dest: /home/ansible/data
+...
